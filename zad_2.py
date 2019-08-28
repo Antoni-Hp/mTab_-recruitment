@@ -19,7 +19,7 @@ try:
     print("number of all auctions: ", number_all_auctions)
     prince_in_gr = first_bicycle.split()[0].split(',')
     print((int(prince_in_gr[0]) * 100) + int(prince_in_gr[1]))
-    # driver.close()
+    driver.close()
     if ((int(prince_in_gr[0]) * 100) + int(prince_in_gr[1])) > int(number_all_auctions):
         print("Test PASS")
     else:
