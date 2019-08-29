@@ -25,7 +25,7 @@ class Main():
 
     def condition(self):
         self.prince_in_gr = self.first_bicycle.split()[0].split(',')
-        print((int(self.prince_in_gr[0]) * 100) + int(self.prince_in_gr[1]))
+        self.service.sesionClose()
         if ((int(self.prince_in_gr[0]) * 100) + int(self.prince_in_gr[1])) > int(self.number_all_auctions):
             return True
         else:

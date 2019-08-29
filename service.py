@@ -29,3 +29,6 @@ class Service():
 
     def getAkcept(self, value):
         return value.send_keys(Keys.RETURN)
+
+    def sesionClose(self):
+        self.driver.close()
