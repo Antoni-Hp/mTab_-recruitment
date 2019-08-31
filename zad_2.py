@@ -1,35 +1,33 @@
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.keys import Keys
+import service
 
-try:
-    driver = webdriver.Chrome(executable_path='C:\TestFiles\chromedriver.exe')
-    driver.get('http://allegro.pl')
-    assert "Allegro.pl – najlepsze ceny, największy wybór i zawsze bezpieczne zakupy online" in driver.title
-    advertisement = driver.find_elements_by_css_selector("div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x")
-    if advertisement:
-        driver.find_element_by_css_selector("div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x").click()
-    search = driver.find_element_by_name("string")
-    search.send_keys("rower")
-    search.send_keys(Keys.RETURN)
-    first_bicycle = driver.find_element_by_css_selector("div.bf8839e").text
-    number_all_auctions = driver.find_element_by_css_selector("div._lsy4e._1hs1x._1ue2y._1t9p2._1h7wt._15mod._1vryf._1yfhn._3db39_1ZtAT._7ccvy").text.split()[-2]
-    print("price first bicycle: ", first_bicycle)
-    print( "number of auctions per page: ", len(driver.find_elements_by_css_selector("div.bf8839e")))
-    print("number of all auctions: ", number_all_auctions)
-    prince_in_gr = first_bicycle.split()[0].split(',')
-    print((int(prince_in_gr[0]) * 100) + int(prince_in_gr[1]))
-    driver.close()
-    if ((int(prince_in_gr[0]) * 100) + int(prince_in_gr[1])) > int(number_all_auctions):
-        print("Test PASS")
-    else:
-        print("Test FAILL")
+class Main():
+    def __init__(self):
+        self.service = service.Service('http://allegro.pl')
+        self.title = 'Allegro.pl – najlepsze ceny, największy wybór i zawsze bezpieczne zakupy online'
+        self.serch_item = 'rower'
 
-except NoSuchElementException:
-    print("Brak elementu")
-    print("Test FAILL")
-    raise
+    def start(self):
+        if self.service.getTitle() != self.title:
+            return False
+        if self.service.getFindElementbySelector("div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x").click():
+            pass
+        self.search()
+        return self.condition()
 
-except:
-    print("Test FAILL")
-    raise
+    def search(self):
+        self.search = self.service.getFindElementbyName("string")
+        self.search.send_keys(self.serch_item)
+        self.service.getAkcept(self.search)
+        self.number_all_auctions = self.service.getFindElementbySelector("div._lsy4e._1hs1x._1ue2y._1t9p2._1h7wt._15mod._1vryf._1yfhn._3db39_1ZtAT._7ccvy").text.split()[-2]
+        self.first_bicycle = self.service.getFindElementbySelector("div.bf8839e").text
+        print("price first bicycle: ", self.first_bicycle)
+        print("number of auctions per page: ", len(self.service.getFindElementsbySelector("div.bf8839e")))
+        print("number of all auctions: ", self.number_all_auctions)
+
+    def condition(self):
+        self.prince_in_gr = self.first_bicycle.split()[0].split(',')
+        self.service.sesionClose()
+        if ((int(self.prince_in_gr[0]) * 100) + int(self.prince_in_gr[1])) > int(self.number_all_auctions):
+            return True
+        else:
+            return False
