@@ -11,11 +11,11 @@ class Main():
             return False
         if self.service.getFindElementbySelector("div._4f735_Ag0om._ur8qq > div > div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x > button").click():
             pass
-        self.search()
+        self.getSearch()
         self.service.sesionClose()
         return True
 
-    def search(self):
-        self.search = self.service.getFindElementbyName("string")
-        self.search.send_keys(self.serch_item)
-        self.service.getAkcept(self.search)
+    def getSearch(self):
+        self.look_for = self.service.getFindElementbyName("string")
+        self.look_for.send_keys(self.serch_item)
+        self.service.getAkcept(self.look_for)

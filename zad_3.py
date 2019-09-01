@@ -16,9 +16,9 @@ class Main():
         return True
 
     def search(self):
-        self.search = self.service.getFindElementbyName("string")
-        self.search.send_keys(self.serch_item)
-        self.service.getAkcept(self.search)
+        self.look_for = self.service.getFindElementbyName("string")
+        self.look_for.send_keys(self.serch_item)
+        self.service.getAkcept(self.look_for)
         self.sort()
 
     def sort(self):

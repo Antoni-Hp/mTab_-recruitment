@@ -16,9 +16,9 @@ class Main():
         return self.condition()
 
     def search(self):
-        self.search = self.service.getFindElementbyName("string")
-        self.search.send_keys(self.serch_item)
-        self.service.getAkcept(self.search)
+        self.look_for = self.service.getFindElementbyName("string")
+        self.look_for.send_keys(self.serch_item)
+        self.service.getAkcept(self.look_for)
         self.first_bicycle = self.service.getFindElementbySelector("div.bf8839e").text
         self.auction_on_page = self.service.getFindElementsbySelector("div.bf8839e")
         print("price first bicycle: ", self.first_bicycle)
