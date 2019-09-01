@@ -1,14 +1,15 @@
+import zad_1
 import zad_2
+import zad_3
 import zad_4
 
-score_1 = zad_2.Main().start()
-if score_1 is True:
-    print("test PASS")
-else:
-    print("test FAIL")
+def condition(score):
+    if score is True:
+        print("test PASS")
+    else:
+        print("test FAIL")
 
-score_2 = zad_4.Main().start()
-if score_2 is True:
-    print("test PASS")
-else:
-    print("test FAIL")
+condition(zad_1.Main().start())
+condition(zad_2.Main().start())
+condition(zad_3.Main().start())
+condition(zad_4.Main().start())

@@ -9,7 +9,7 @@ class Main():
     def start(self):
         if self.service.getTitle() != self.title:
             return False
-        if self.service.getFindElementbySelector("div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x").click():
+        if self.service.getFindElementbySelector("div._4f735_Ag0om._ur8qq > div > div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x > button").click():
             pass
         self.search()
         return self.condition()
