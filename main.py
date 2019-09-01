@@ -11,7 +11,7 @@ def condition(score):
         print("test FAIL")
 
 
-condition(zad_1.Main().start())
-condition(zad_2.Main().start())
-condition(zad_3.Main().start())
-condition(zad_4.Main().start())
+condition(zad_1.Start())
+condition(zad_2.Start())
+condition(zad_3.Start())
+condition(zad_4.Start())

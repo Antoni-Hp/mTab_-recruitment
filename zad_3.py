@@ -1,6 +1,10 @@
 import service
 
 
+def Start():
+    return Main().start()
+
+
 class Main():
     def __init__(self):
         #wywolanie modulu selenium, otwarcie przegladarki Chrome w trybie automatycznym, przejscie do podanej strony(allegro.pl)
@@ -18,7 +22,7 @@ class Main():
         if self.service.getFindElementbySelector("div._4f735_Ag0om._ur8qq > div > div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x > button").click():
             pass
         #wywolanie funkcji serch
-        self.getSearch()
+        self.search()
         #wywolanie funkcji zamykajacej sesje
         self.service.sesionClose()
         return True

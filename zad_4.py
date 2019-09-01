@@ -2,6 +2,10 @@ import service
 import time
 
 
+def Start():
+    return Main().start()
+
+
 class Main():
     def __init__(self):
         self.service = service.Service('http://allegro.pl')

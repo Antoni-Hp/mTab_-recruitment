@@ -1,5 +1,10 @@
 import service
 
+
+def Start():
+    return Main().start()
+
+
 class Main():
     def __init__(self):
         #wywolanie modulu selenium, otwarcie przegladarki Chrome w trybie automatycznym, przejscie do podanej strony(allegro.pl)
