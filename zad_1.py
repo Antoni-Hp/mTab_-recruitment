@@ -9,7 +9,7 @@ class Main():
         #zdefiniowanie szukanego elementu
         self.serch_item = 'rower'
 
-    def start(self):\
+    def start(self):
         #sprawdza czy zaladowala sie poprawna strona
         if self.service.getTitle() != self.title:
             return False
