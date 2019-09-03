@@ -1,5 +1,7 @@
 download all files and save to one folder
+
 install python 3.7 - https://www.python.org/downloads/
+
 instal selenium - https://pypi.org/project/selenium/
 
 
