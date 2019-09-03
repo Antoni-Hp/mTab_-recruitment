@@ -1,38 +1,23 @@
-import service
-import serch
 import functions
 
 
-def Start():
-    return Main().start()
+# test podaje wszystkie potrzebne dane do wykonania testu - adres strony,  tytuł przed i po wyszukiwaniu, szukany obiekt,
+# oraz potrzebne nazwy klas, selektorów i name
+adres_url = 'http://allegro.pl'
+title_1 = 'Allegro.pl – najlepsze ceny, największy wybór i zawsze bezpieczne zakupy online'
+advertisment_selector = "div._4f735_Ag0om._ur8qq > div > div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x > button"
+search_item = "rower"
+search_name = "string"
+search_title = "%s - Allegro.pl - Więcej niż aukcje. Najlepsze oferty na największej platformie handlowej" %search_item
 
+# test uruchamia klase functions() uruchamiajac tym samym przegladarkę
+zad1 = functions.functions()
+# test wywoluje funkcje odpowiedzialną za przejscie do podanej strony oraz sprawdza czy akcja się powiodła
+zad1.url(adres_url, title_1, advertisment_selector)
+# test wywołuje funkcje odpowiedzialną za wyszukiwanie podanego obiektu, przechodzi do strony z wynikami wyszukiwania,
+# a nastepnie sprawdza czy akcja się powiodła
+zad1.search(search_item, search_name, search_title)
+# test zamyka przegladarkę jezeli nie napotkał żadych błędów
+zad1.close()
 
-class Main():
-    def __init__(self):
-        #wywolanie modulu selenium, otwarcie przegladarki Chrome w trybie automatycznym, przejscie do podanej strony(allegro.pl)
-        self.service = service.Service('http://allegro.pl')
-        #definicja zmiennej tytul w celu porownania z tytulem strony
-        self.title = 'Allegro.pl – najlepsze ceny, największy wybór i zawsze bezpieczne zakupy online'
-        #zdefiniowanie szukanego elementu
-        self.serch_item = 'rower'
-
-    def start(self):
-        #sprawdza czy zaladowala sie poprawna strona
-        if self.service.getTitle() != self.title:
-            return False
-        #jezeli na stronie pojawia sie okno z reklama, test znajduje odpowiedni przycisk zamykajacy ja i go klika
-        if self.service.getFindElementbySelector("div._4f735_Ag0om._ur8qq > div > div._3kk7b._vnd3k._1h8s6._13prn._12isx._kiiea._oeb1x > button").click():
-            pass
-        #wywolanie funkcji serch
-        self.getSearch()
-        #wywolanie funkcji zamykajacej sesje
-        self.service.sesionClose()
-        return True
-
-    def getSearch(self):
-        #znalezienie pola tekstowego "szukaj"
-        self.look_for = self.service.getFindElementbyName("string")
-        #przeslanie wartosci do sekcji "szukaj"
-        self.look_for.send_keys(self.serch_item)
-        #nacisniecie przycisku Enter w celu zatwierdzenia podanej wartosci
-        self.service.getAkcept(self.look_for)
+print("test pass")
