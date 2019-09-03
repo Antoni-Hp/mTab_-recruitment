@@ -2,8 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 class Service():
-    def __init__(self, website):
-        self.driver = webdriver.Chrome(executable_path = 'C:\TestFiles\chromedriver.exe')
+    def __init__(self):
+        self.driver = webdriver.Chrome(executable_path = 'chromedriver.exe')
+
+    def website(self, website):
         self.driver.get(website)
 
     def getTitle(self):
@@ -29,6 +31,12 @@ class Service():
 
     def getAkcept(self, value):
         return value.send_keys(Keys.RETURN)
+
+    def onPage_source_not(self, value):
+        assert value not in self.driver.page_source
+
+    def onPage_source_is(self, value):
+        assert value in self.driver.page_source
 
     def sesionClose(self):
         self.driver.close()
